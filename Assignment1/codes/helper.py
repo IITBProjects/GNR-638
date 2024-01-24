@@ -154,10 +154,9 @@ def findAccuracy(true, predictions):
     print ('accuracy score: %0.3f' % accuracy_score(true, predictions))
 
 def calculate_glcm(img):
-    # Calculate GLCM in five directions (0, 45, 90, 135, and their perpendicular counterparts)
     glcm_features = []
 
-    angles = [0, np.pi*(1/5), np.pi*(2/5),np.pi*(3/5), np.pi*(4/5)]  # Added direction at 180 degrees
+    angles = [0, np.pi*(1/5), np.pi*(2/5),np.pi*(3/5), np.pi*(4/5)] 
 
     for angle in angles:
         glcm = graycomatrix(img, [1], [angle], symmetric=True, normed=True)
