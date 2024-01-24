@@ -149,6 +149,7 @@ def plotConfusions(true, predictions):
 
     plt.show()
 
+
 def findAccuracy(true, predictions):
     print ('accuracy score: %0.3f' % accuracy_score(true, predictions))
 

@@ -116,6 +116,9 @@ def testModelWithGLCM(path, kmeans, scale, svm, im_features, no_clusters, kernel
 
     test_features_combined = concat_kmeans_and_glcm(test_im_features, test_glcm_features)
 
+    # Explicitly perform l2-norm on the features
+    test_features_combined = test_features_combined / np.linalg.norm(test_features_combined, axis=1, keepdims=True)
+
     test_features_combined = scale.transform(test_features_combined)
 
     kernel_test = test_features_combined
