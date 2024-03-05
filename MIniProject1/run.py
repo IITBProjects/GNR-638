@@ -3,12 +3,21 @@ from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 import torch
 import os
-from codes import CUB200,CustomModel,train_model,save_lists_to_csv,plot_and_save_accuracy
+import sys
+from codes import CUB200,EfficientNetModel,MobileNetModel,InceptionNetModel,ResNetModel,train_model,save_lists_to_csv,plot_and_save_accuracy
 from torchsummary import summary
 
+# Dictionary mapping model names to their respective classes
+MODEL_CLASSES = {
+    'EfficientNetModel': EfficientNetModel,
+    'MobileNetModel': MobileNetModel,
+    'InceptionNetModel': InceptionNetModel,
+    'ResNetModel': ResNetModel,
+}
+
 def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_size,epochs,checkpoint_path,checkpoint_savepath,output_directory):
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
+    if not os.path.exists(os.path.join(output_directory,model_name)):
+        os.makedirs(os.path.join(output_directory,model_name))
 
     # Set the seed for the random number generators
     torch.manual_seed(torch_seed)
@@ -30,7 +39,9 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     
-    model = CustomModel(pretrained_model_name=model_name,num_classes=train_dataset.num_classes,freeze_layers=[])
+    # Create the model based on the model name
+    model_class = MODEL_CLASSES[model_name]
+    model = model_class(num_classes=train_dataset.num_classes, freeze_layers=[])  # You may need to adjust other arguments
 
     # Optionally load model from checkpoint
     if checkpoint_path is not None:
@@ -41,10 +52,10 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
     # Print model summary
     print("Model Summary:")
     summary(model, (3, resize_height, resize_width))
-
+    
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters())
-    training_loss_list,training_accuracy_list,test_accuracy_list,epochs_list = train_model(train_loader, test_loader, model, criterion, optimizer, epochs)
+    training_loss_list,training_accuracy_list,test_loss_list,test_accuracy_list,epochs_list = train_model(train_loader, test_loader, model, criterion, optimizer, epochs)
 
     # Save model checkpoint
     torch.save({
@@ -53,8 +64,9 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
         'epochs': epochs_list[-1]  # Save the last epoch
     }, checkpoint_savepath)
     print("Model checkpoint saved to:", checkpoint_savepath)
-    save_lists_to_csv(training_loss_list, training_accuracy_list, test_accuracy_list, epochs_list, output_directory)
-    plot_and_save_accuracy(training_accuracy_list, test_accuracy_list, epochs_list, output_directory)
+    save_lists_to_csv(training_loss_list, training_accuracy_list,test_loss_list, test_accuracy_list, epochs_list, os.path.join(output_directory,model_name))
+    plot_and_save_accuracy(training_accuracy_list, test_accuracy_list, epochs_list,model_name, os.path.join(output_directory,model_name))
+    os.system(f"mv logs.txt {os.path.join(output_directory,model_name,'logs.txt')}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -62,12 +74,12 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_path', action="store", dest="dataset_path", default='dataset/CUB_200_2011')
     parser.add_argument('--resize_height', action="store", dest="resize_height", default=224, type=int)
     parser.add_argument('--resize_width', action="store", dest="resize_width", default=224, type=int)
-    parser.add_argument('--model_name', action="store", dest="model_name", default='efficientnetb0',choices=['mobilenetv2','efficientnetb0'])
-    parser.add_argument('--batch_size', action="store", dest="batch_size", default=16, type=int)
+    parser.add_argument('--model_name', action="store", dest="model_name", default='EfficientNetModel',choices=['EfficientNetModel','MobileNetModel','InceptionNetModel','ResNetModel'])
+    parser.add_argument('--batch_size', action="store", dest="batch_size", default=32, type=int)
     parser.add_argument('--epochs', action="store", dest="epochs", default=5, type=int)
     parser.add_argument('--checkpoint_path', action="store", dest="checkpoint_path", default=None)
     parser.add_argument('--checkpoint_savepath', action="store", dest="checkpoint_savepath", default='outputs/checkpoint.pth')
     parser.add_argument('--output_directory', action="store", dest="output_directory", default='outputs/')
     args = parser.parse_args()
-
+    
     train(args.torch_seed,args.dataset_path,args.resize_height, args.resize_width,args.model_name, args.batch_size, args.epochs,args.checkpoint_path,args.checkpoint_savepath,args.output_directory)
