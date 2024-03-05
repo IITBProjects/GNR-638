@@ -35,8 +35,8 @@ def train_model(train_loader, test_loader, model, criterion, optimizer, num_epoc
             train_total_count += train_batch_count
             train_total_correct += train_batch_correct
             running_loss += train_batch_count*loss.item()
-
-            print(f'Train Batch [{batch_number}/{total_batches}] :      Batch Size : {train_batch_count}        Batch Mean Loss: {loss.item():.5f}      Batch Accuracy: {(train_batch_correct/train_batch_count)*100:.2f}%     Rolling Epoch Accuracy: {(train_total_correct/train_total_count)*100:.2f}%')
+            if batch_number%10==0:
+                print(f'Train Batch [{batch_number}/{total_batches}] :      Batch Size : {train_batch_count}        Batch Mean Loss: {loss.item():.5f}      Batch Accuracy: {(train_batch_correct/train_batch_count)*100:.2f}%     Rolling Epoch Accuracy: {(train_total_correct/train_total_count)*100:.2f}%')
 
         # Evaluation phase
         model.eval()
@@ -59,7 +59,8 @@ def train_model(train_loader, test_loader, model, criterion, optimizer, num_epoc
                 total_train_loss += loss.item()*train_batch_count
                 train_total_count += train_batch_count
                 train_total_correct += train_batch_correct
-                print(f'Evaluation Train Batch [{batch_number}/{total_batches}] :      Batch Size : {train_batch_count}     Batch Mean Loss: {loss.item():.5f}     Batch Accuracy: {(train_batch_correct/train_batch_count)*100:.2f}%')
+                if batch_number%10==0:
+                    print(f'Evaluation Train Batch [{batch_number}/{total_batches}] :      Batch Size : {train_batch_count}     Batch Mean Loss: {loss.item():.5f}     Batch Accuracy: {(train_batch_correct/train_batch_count)*100:.2f}%')
 
             test_total_count = 0
             test_total_correct = 0
@@ -78,7 +79,8 @@ def train_model(train_loader, test_loader, model, criterion, optimizer, num_epoc
                 total_test_loss += loss.item()*test_batch_count
                 test_total_count += test_batch_count
                 test_total_correct += test_batch_correct
-                print(f'Evaluation Test Batch [{batch_number}/{total_batches}] :      Batch Size : {test_batch_count}     Batch Mean Loss: {loss.item():.5f}     Batch Accuracy: {(test_batch_correct/test_batch_count)*100:.2f}%')
+                if batch_number%10==0:
+                    print(f'Evaluation Test Batch [{batch_number}/{total_batches}] :      Batch Size : {test_batch_count}     Batch Mean Loss: {loss.item():.5f}     Batch Accuracy: {(test_batch_correct/test_batch_count)*100:.2f}%')
             
             train_accuracy = 100 * train_total_correct / train_total_count
             test_accuracy = 100 * test_total_correct / test_total_count

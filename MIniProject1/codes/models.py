@@ -4,7 +4,7 @@ from efficientnet_pytorch import EfficientNet
 
 
 class EfficientNetModel(nn.Module):
-    def __init__(self, num_classes,freeze_pretrianed=True,freeze_layers=[]):
+    def __init__(self, num_classes,freeze_pretrianed=True,freeze_layers=[],dropout_prob=0.35):
         super(EfficientNetModel, self).__init__()
 
         # Load the pretrained model
@@ -18,7 +18,10 @@ class EfficientNetModel(nn.Module):
         # Modify the classifcation layers
         num_features = self.pretrained_model._fc.in_features
         self.pretrained_model._fc = nn.Sequential(
-            nn.Linear(num_features, num_classes),  
+            nn.Linear(num_features, 512),  
+            nn.ReLU(inplace=True),
+            nn.Dropout(p=dropout_prob),
+            nn.Linear(512, num_classes)
         )
         
         # Freeze specified layers

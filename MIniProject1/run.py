@@ -15,7 +15,7 @@ MODEL_CLASSES = {
     'ResNetModel': ResNetModel,
 }
 
-def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_size,epochs,checkpoint_path,checkpoint_savepath,output_directory):
+def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_size,epochs,checkpoint_path,output_directory):
     if not os.path.exists(os.path.join(output_directory,model_name)):
         os.makedirs(os.path.join(output_directory,model_name))
 
@@ -26,8 +26,6 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
 
     transform = transforms.Compose([
         transforms.Resize((resize_height, resize_width)),
-        # Convert grayscale images to RGB
-        transforms.Grayscale(num_output_channels=3),
         transforms.ToTensor(),
     ])
     train_dataset = CUB200(dataset_path=dataset_path, data_type='train',transform=transform)
@@ -57,6 +55,7 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
     optimizer = torch.optim.Adam(model.parameters())
     training_loss_list,training_accuracy_list,test_loss_list,test_accuracy_list,epochs_list = train_model(train_loader, test_loader, model, criterion, optimizer, epochs)
 
+    checkpoint_savepath = os.path.join(output_directory,model_name,'checkpoint.pth')
     # Save model checkpoint
     torch.save({
         'model_state_dict': model.state_dict(),
@@ -70,16 +69,15 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--torch_seed', action="store", dest="torch_seed", default=42, type=int)
+    parser.add_argument('--torch_seed', action="store", dest="torch_seed", default=1, type=int)
     parser.add_argument('--dataset_path', action="store", dest="dataset_path", default='dataset/CUB_200_2011')
     parser.add_argument('--resize_height', action="store", dest="resize_height", default=224, type=int)
     parser.add_argument('--resize_width', action="store", dest="resize_width", default=224, type=int)
     parser.add_argument('--model_name', action="store", dest="model_name", default='EfficientNetModel',choices=['EfficientNetModel','MobileNetModel','InceptionNetModel','ResNetModel'])
-    parser.add_argument('--batch_size', action="store", dest="batch_size", default=32, type=int)
+    parser.add_argument('--batch_size', action="store", dest="batch_size", default=16, type=int)
     parser.add_argument('--epochs', action="store", dest="epochs", default=5, type=int)
     parser.add_argument('--checkpoint_path', action="store", dest="checkpoint_path", default=None)
-    parser.add_argument('--checkpoint_savepath', action="store", dest="checkpoint_savepath", default='outputs/checkpoint.pth')
     parser.add_argument('--output_directory', action="store", dest="output_directory", default='outputs/')
     args = parser.parse_args()
     
-    train(args.torch_seed,args.dataset_path,args.resize_height, args.resize_width,args.model_name, args.batch_size, args.epochs,args.checkpoint_path,args.checkpoint_savepath,args.output_directory)
+    train(args.torch_seed,args.dataset_path,args.resize_height, args.resize_width,args.model_name, args.batch_size, args.epochs,args.checkpoint_path,args.output_directory)
