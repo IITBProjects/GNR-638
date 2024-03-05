@@ -65,7 +65,7 @@ def train(torch_seed,dataset_path,resize_height,resize_width,model_name,batch_si
     print("Model checkpoint saved to:", checkpoint_savepath)
     save_lists_to_csv(training_loss_list, training_accuracy_list,test_loss_list, test_accuracy_list, epochs_list, os.path.join(output_directory,model_name))
     plot_and_save_accuracy(training_accuracy_list, test_accuracy_list, epochs_list,model_name, os.path.join(output_directory,model_name))
-    os.system(f"mv logs.txt {os.path.join(output_directory,model_name,'logs.txt')}")
+    os.system(f"mv {model_name}.txt {os.path.join(output_directory,model_name,'logs.txt')}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
