@@ -35,7 +35,7 @@ class EfficientNetModel(nn.Module):
     
 
 class MobileNetModel(nn.Module):
-    def __init__(self, num_classes,freeze_pretrianed=True,freeze_layers=[], dropout_prob=0.5):
+    def __init__(self, num_classes,freeze_pretrianed=True,freeze_layers=[], dropout_prob=0.35):
         super(MobileNetModel, self).__init__()
 
         # Load the pretrained model
@@ -47,26 +47,25 @@ class MobileNetModel(nn.Module):
         self.pretrained_model = pretrained_model
 
         # Modify the classifcation layers
-        num_features = self.pretrained_model.classifier[1].in_features
+        num_features = self.pretrained_model.classifier[0].in_features
         self.pretrained_model.classifier = nn.Sequential(
-                nn.Linear(num_features, 512),  
-                nn.ReLU(inplace=True),
-                nn.Dropout(p=dropout_prob),
-                nn.Linear(512, num_classes)
+            nn.Linear(num_features, 512),
+            nn.Hardswish(inplace=True),
+            nn.Dropout(p=dropout_prob),
+            nn.Linear(512, num_classes),
         )
 
         # Freeze specified layers
-        if freeze_pretrianed:
+        if freeze_layers:
             for param in pretrained_model.parameters():
                 param.requires_grad = False
-        return pretrained_model
 
     def forward(self, x):
         return self.pretrained_model(x)
     
 
 class InceptionNetModel(nn.Module):
-    def __init__(self, num_classes, freeze_pretrained=True, freeze_layers=[], dropout_prob=0.5):
+    def __init__(self, num_classes, freeze_pretrained=True, freeze_layers=[], dropout_prob=0.35):
         super(InceptionNetModel, self).__init__()
 
         # Load the pretrained model
@@ -99,7 +98,7 @@ class InceptionNetModel(nn.Module):
 
 
 class ResNetModel(nn.Module):
-    def __init__(self, num_classes, freeze_pretrained=True, freeze_layers=[], dropout_prob=0.5):
+    def __init__(self, num_classes, freeze_pretrained=True, freeze_layers=[], dropout_prob=0.35):
         super(ResNetModel, self).__init__()
 
         # Load the pretrained model
