@@ -23,12 +23,22 @@ class Pipeline:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     def create_dataloder(self):
-        transform = transforms.Compose([
-            transforms.Resize((self.config['transform']['height'], self.config['transform']['width'])),
-            transforms.ToTensor()
+        train_transform = transforms.Compose([
+            transforms.RandomResizedCrop(self.config['transform']['height']),
+            transforms.RandomHorizontalFlip(),
+            transforms.ColorJitter(brightness = 0.2, contrast = 0.2, saturation = 0.2, hue = 0.1),
+            transforms.RandomRotation(degrees = 10),
+            transforms.ToTensor(),
+            transforms.Normalize(mean = self.config['transform']['normalize_mean'], std = self.config['transform']['normalize_std']),
         ])
-        train_dataset = CUB(df = self.data[self.data['is_training_image'] == 1], transform = transform)
-        test_dataset = CUB(df = self.data[self.data['is_training_image'] == 0], transform = transform)
+        test_transform = transforms.Compose([
+            transforms.Resize((self.config['transform']['height'], self.config['transform']['width'])),
+            transforms.ToTensor(),
+            transforms.Normalize(mean = self.config['transform']['normalize_mean'], std = self.config['transform']['normalize_std']),
+        ])
+
+        train_dataset = CUB(df = self.data[self.data['is_training_image'] == 1], transform = train_transform)
+        test_dataset = CUB(df = self.data[self.data['is_training_image'] == 0], transform = test_transform)
 
         self.train_loader = DataLoader(train_dataset, batch_size = self.config['train']['batch_size'], shuffle = True, num_workers = 4)
         self.test_loader = DataLoader(test_dataset, batch_size = self.config['train']['batch_size'], num_workers = 4)
@@ -72,10 +82,8 @@ class Pipeline:
 
         start = datetime.now()
         for epoch in range(num_epochs):
-            self.model.train()
             _, _ = self.run_epoch(self.train_loader, True)
 
-            self.model.eval()
             train_loss, train_accuracy = self.run_epoch(self.train_loader, False)
             test_loss, test_accuracy = self.run_epoch(self.test_loader, False)
 
@@ -102,6 +110,7 @@ class Pipeline:
         print(f"Test loss: {test_loss}, Test accuracy: {test_accuracy}")
     
     def run_epoch(self, dataloader: DataLoader, train):
+        self.model.train() if train else self.model.eval()
         running_loss = 0.
         correct_predictions, total_predictions = 0, 0
 
@@ -115,22 +124,23 @@ class Pipeline:
                 _, predicted = torch.max(outputs, 1)
 
                 correct = (predicted == labels).sum().item()
+                loss = self.criterion(outputs, labels)
+                
                 correct_predictions += correct
                 total_predictions += batch_size
+                running_loss += batch_size * loss.item()
 
                 if train:
-                    loss = self.criterion(outputs, labels)
                     loss.backward()
                     self.optimizer.step()
-                    running_loss += batch_size * loss.item()
 
                     if batch % self.config['train']['batch_logs'] == 0:
                         print(
                             f"Training Batch [{batch}/{len(dataloader)}]",
                             f"Batch Size: {batch_size}",
                             f"Batch Mean Loss: {loss.item():.5f}",
-                            f"Batch Accuracy: {(correct/batch_size)*100:.2f}%",
-                            f"Rolling Epoch Accuracy: {(correct_predictions/total_predictions) * 100:.2f}%",
+                            f"Batch Accuracy: {(correct / batch_size)*100:.2f}%",
+                            f"Rolling Epoch Accuracy: {(correct_predictions / total_predictions) * 100:.2f}%",
                             sep = '    '
                         )
 

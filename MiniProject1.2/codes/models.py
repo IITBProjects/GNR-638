@@ -73,18 +73,18 @@ class InceptionNetModel(nn.Module):
         return self.pretrained_model(x)
 
 
-class ResNetModel(nn.Module):
+class DenseNetModel(nn.Module):
     def __init__(self, num_classes, freeze_pretrained = True, freeze_layers = [], dropout_prob = 0.35):
-        super(ResNetModel, self).__init__()
+        super(DenseNetModel, self).__init__()
 
         # Load the pretrained model
-        self.pretrained_model = models.resnet18(pretrained = True)
+        self.pretrained_model = models.densenet121(pretrained = True)
         if freeze_pretrained:
             Utils.freeze_all(self.pretrained_model)
 
         # Modify the classification layers
-        num_features = self.pretrained_model.fc.in_features
-        self.pretrained_model.fc = nn.Sequential(
+        num_features = self.pretrained_model.classifier.in_features
+        self.pretrained_model.classifier = nn.Sequential(
             nn.Linear(num_features, 512),  
             nn.ReLU(inplace = True),
             nn.Dropout(p = dropout_prob),
