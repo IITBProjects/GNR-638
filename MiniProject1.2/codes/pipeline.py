@@ -54,7 +54,7 @@ class Pipeline:
             freeze_layers = self.config['train']['freeze_layers']
         ).to(self.device)
         self.criterion = torch.nn.CrossEntropyLoss()
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr = 0.0005)
+        self.optimizer = torch.optim.Adam(self.model.parameters())
         self.train_epochs = 0
 
         if self.config['train']['checkpoint_path']:
