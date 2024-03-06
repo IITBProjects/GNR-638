@@ -1,0 +1,19 @@
+{
+    "dataset_path": "dataset/CUB_200_2011",
+    "output_dir": "outputs",
+    "torch_seed": 42,
+    "transform": {
+        "height": 224,
+        "width": 224,
+        "num_channels": 3
+    },
+    "train": {
+        "model": "EfficientNetModel",
+        "checkpoint_path": null,
+        "checkpoint_save": "checkpoint.pth",
+        "freeze_layers": [],
+        "epochs": 1,
+        "batch_size": 32,
+        "batch_logs": 10
+    }
+}

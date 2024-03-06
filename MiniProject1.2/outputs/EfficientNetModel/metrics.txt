@@ -1,0 +1,2 @@
+   Training Loss  Training Accuracy  Test Loss  Test Accuracy
+0              1                  1          1              1
