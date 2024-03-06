@@ -39,10 +39,10 @@ class MobileNetModel(nn.Module):
         # Modify the classifcation layers
         num_features = self.pretrained_model.classifier[0].in_features
         self.pretrained_model.classifier = nn.Sequential(
-                nn.Linear(num_features, 512),  
-                nn.Hardswish(inplace = True),
-                nn.Dropout(p = dropout_prob),
-                nn.Linear(512, num_classes)
+            nn.Linear(num_features, 512),  
+            nn.Hardswish(inplace = True),
+            nn.Dropout(p = dropout_prob),
+            nn.Linear(512, num_classes)
         )
         Utils.freeze(self.pretrained_model, freeze_layers)
 

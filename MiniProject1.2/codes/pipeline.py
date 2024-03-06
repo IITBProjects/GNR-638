@@ -52,7 +52,7 @@ class Pipeline:
         self.model: torch.nn.Module = getattr(models, self.config['train']['model'])(
             num_classes = self.num_classes,
             freeze_layers = self.config['train']['freeze_layers']
-        ).cuda()
+        ).to(self.device)
         self.criterion = torch.nn.CrossEntropyLoss()
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr = 0.0005)
         self.train_epochs = 0
