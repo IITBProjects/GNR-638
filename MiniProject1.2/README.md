@@ -16,6 +16,8 @@
 - `main.py` : This is the entry point to execute the pipeline functions.
 - `setup_env.py` : Sets up the environment for the project.
 - `config.json` : Holds parameters for code execution.
+- `dataset` : Folder containing the CUB dataset.
+- `outputs` : Output folder containing logs, results, plots and checkpoint for each model.
 
 ### Installation
 
