@@ -17,7 +17,7 @@
 - `setup_env.py` : Sets up the environment for the project.
 - `config.json` : Holds parameters for code execution.
 - `dataset` : Folder containing the CUB dataset.
-- `outputs` : Output folder containing logs, results, plots and checkpoint for each model.
+- `outputs` : Output folder containing logs, results and plots for each model.
 
 ### Installation
 

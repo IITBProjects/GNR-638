@@ -14,7 +14,7 @@
         "checkpoint_path": null,
         "checkpoint_save": "checkpoint.pth",
         "freeze_layers": [],
-        "epochs": 5,
+        "epochs": 10,
         "batch_size": 32,
         "batch_logs": 10
     }

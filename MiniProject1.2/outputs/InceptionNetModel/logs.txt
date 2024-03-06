@@ -1,0 +1,418 @@
+Train Dataset length: 5994
+Test Dataset length: 5794
+Dataset  Classes: 200
+Model Summary:
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 112, 112]           9,408
+       BatchNorm2d-2         [-1, 64, 112, 112]             128
+       BasicConv2d-3         [-1, 64, 112, 112]               0
+         MaxPool2d-4           [-1, 64, 56, 56]               0
+            Conv2d-5           [-1, 64, 56, 56]           4,096
+       BatchNorm2d-6           [-1, 64, 56, 56]             128
+       BasicConv2d-7           [-1, 64, 56, 56]               0
+            Conv2d-8          [-1, 192, 56, 56]         110,592
+       BatchNorm2d-9          [-1, 192, 56, 56]             384
+      BasicConv2d-10          [-1, 192, 56, 56]               0
+        MaxPool2d-11          [-1, 192, 28, 28]               0
+           Conv2d-12           [-1, 64, 28, 28]          12,288
+      BatchNorm2d-13           [-1, 64, 28, 28]             128
+      BasicConv2d-14           [-1, 64, 28, 28]               0
+           Conv2d-15           [-1, 96, 28, 28]          18,432
+      BatchNorm2d-16           [-1, 96, 28, 28]             192
+      BasicConv2d-17           [-1, 96, 28, 28]               0
+           Conv2d-18          [-1, 128, 28, 28]         110,592
+      BatchNorm2d-19          [-1, 128, 28, 28]             256
+      BasicConv2d-20          [-1, 128, 28, 28]               0
+           Conv2d-21           [-1, 16, 28, 28]           3,072
+      BatchNorm2d-22           [-1, 16, 28, 28]              32
+      BasicConv2d-23           [-1, 16, 28, 28]               0
+           Conv2d-24           [-1, 32, 28, 28]           4,608
+      BatchNorm2d-25           [-1, 32, 28, 28]              64
+      BasicConv2d-26           [-1, 32, 28, 28]               0
+        MaxPool2d-27          [-1, 192, 28, 28]               0
+           Conv2d-28           [-1, 32, 28, 28]           6,144
+      BatchNorm2d-29           [-1, 32, 28, 28]              64
+      BasicConv2d-30           [-1, 32, 28, 28]               0
+        Inception-31          [-1, 256, 28, 28]               0
+           Conv2d-32          [-1, 128, 28, 28]          32,768
+      BatchNorm2d-33          [-1, 128, 28, 28]             256
+      BasicConv2d-34          [-1, 128, 28, 28]               0
+           Conv2d-35          [-1, 128, 28, 28]          32,768
+      BatchNorm2d-36          [-1, 128, 28, 28]             256
+      BasicConv2d-37          [-1, 128, 28, 28]               0
+           Conv2d-38          [-1, 192, 28, 28]         221,184
+      BatchNorm2d-39          [-1, 192, 28, 28]             384
+      BasicConv2d-40          [-1, 192, 28, 28]               0
+           Conv2d-41           [-1, 32, 28, 28]           8,192
+      BatchNorm2d-42           [-1, 32, 28, 28]              64
+      BasicConv2d-43           [-1, 32, 28, 28]               0
+           Conv2d-44           [-1, 96, 28, 28]          27,648
+      BatchNorm2d-45           [-1, 96, 28, 28]             192
+      BasicConv2d-46           [-1, 96, 28, 28]               0
+        MaxPool2d-47          [-1, 256, 28, 28]               0
+           Conv2d-48           [-1, 64, 28, 28]          16,384
+      BatchNorm2d-49           [-1, 64, 28, 28]             128
+      BasicConv2d-50           [-1, 64, 28, 28]               0
+        Inception-51          [-1, 480, 28, 28]               0
+        MaxPool2d-52          [-1, 480, 14, 14]               0
+           Conv2d-53          [-1, 192, 14, 14]          92,160
+      BatchNorm2d-54          [-1, 192, 14, 14]             384
+      BasicConv2d-55          [-1, 192, 14, 14]               0
+           Conv2d-56           [-1, 96, 14, 14]          46,080
+      BatchNorm2d-57           [-1, 96, 14, 14]             192
+      BasicConv2d-58           [-1, 96, 14, 14]               0
+           Conv2d-59          [-1, 208, 14, 14]         179,712
+      BatchNorm2d-60          [-1, 208, 14, 14]             416
+      BasicConv2d-61          [-1, 208, 14, 14]               0
+           Conv2d-62           [-1, 16, 14, 14]           7,680
+      BatchNorm2d-63           [-1, 16, 14, 14]              32
+      BasicConv2d-64           [-1, 16, 14, 14]               0
+           Conv2d-65           [-1, 48, 14, 14]           6,912
+      BatchNorm2d-66           [-1, 48, 14, 14]              96
+      BasicConv2d-67           [-1, 48, 14, 14]               0
+        MaxPool2d-68          [-1, 480, 14, 14]               0
+           Conv2d-69           [-1, 64, 14, 14]          30,720
+      BatchNorm2d-70           [-1, 64, 14, 14]             128
+      BasicConv2d-71           [-1, 64, 14, 14]               0
+        Inception-72          [-1, 512, 14, 14]               0
+           Conv2d-73          [-1, 160, 14, 14]          81,920
+      BatchNorm2d-74          [-1, 160, 14, 14]             320
+      BasicConv2d-75          [-1, 160, 14, 14]               0
+           Conv2d-76          [-1, 112, 14, 14]          57,344
+      BatchNorm2d-77          [-1, 112, 14, 14]             224
+      BasicConv2d-78          [-1, 112, 14, 14]               0
+           Conv2d-79          [-1, 224, 14, 14]         225,792
+      BatchNorm2d-80          [-1, 224, 14, 14]             448
+      BasicConv2d-81          [-1, 224, 14, 14]               0
+           Conv2d-82           [-1, 24, 14, 14]          12,288
+      BatchNorm2d-83           [-1, 24, 14, 14]              48
+      BasicConv2d-84           [-1, 24, 14, 14]               0
+           Conv2d-85           [-1, 64, 14, 14]          13,824
+      BatchNorm2d-86           [-1, 64, 14, 14]             128
+      BasicConv2d-87           [-1, 64, 14, 14]               0
+        MaxPool2d-88          [-1, 512, 14, 14]               0
+           Conv2d-89           [-1, 64, 14, 14]          32,768
+      BatchNorm2d-90           [-1, 64, 14, 14]             128
+      BasicConv2d-91           [-1, 64, 14, 14]               0
+        Inception-92          [-1, 512, 14, 14]               0
+           Conv2d-93          [-1, 128, 14, 14]          65,536
+      BatchNorm2d-94          [-1, 128, 14, 14]             256
+      BasicConv2d-95          [-1, 128, 14, 14]               0
+           Conv2d-96          [-1, 128, 14, 14]          65,536
+      BatchNorm2d-97          [-1, 128, 14, 14]             256
+      BasicConv2d-98          [-1, 128, 14, 14]               0
+           Conv2d-99          [-1, 256, 14, 14]         294,912
+     BatchNorm2d-100          [-1, 256, 14, 14]             512
+     BasicConv2d-101          [-1, 256, 14, 14]               0
+          Conv2d-102           [-1, 24, 14, 14]          12,288
+     BatchNorm2d-103           [-1, 24, 14, 14]              48
+     BasicConv2d-104           [-1, 24, 14, 14]               0
+          Conv2d-105           [-1, 64, 14, 14]          13,824
+     BatchNorm2d-106           [-1, 64, 14, 14]             128
+     BasicConv2d-107           [-1, 64, 14, 14]               0
+       MaxPool2d-108          [-1, 512, 14, 14]               0
+          Conv2d-109           [-1, 64, 14, 14]          32,768
+     BatchNorm2d-110           [-1, 64, 14, 14]             128
+     BasicConv2d-111           [-1, 64, 14, 14]               0
+       Inception-112          [-1, 512, 14, 14]               0
+          Conv2d-113          [-1, 112, 14, 14]          57,344
+     BatchNorm2d-114          [-1, 112, 14, 14]             224
+     BasicConv2d-115          [-1, 112, 14, 14]               0
+          Conv2d-116          [-1, 144, 14, 14]          73,728
+     BatchNorm2d-117          [-1, 144, 14, 14]             288
+     BasicConv2d-118          [-1, 144, 14, 14]               0
+          Conv2d-119          [-1, 288, 14, 14]         373,248
+     BatchNorm2d-120          [-1, 288, 14, 14]             576
+     BasicConv2d-121          [-1, 288, 14, 14]               0
+          Conv2d-122           [-1, 32, 14, 14]          16,384
+     BatchNorm2d-123           [-1, 32, 14, 14]              64
+     BasicConv2d-124           [-1, 32, 14, 14]               0
+          Conv2d-125           [-1, 64, 14, 14]          18,432
+     BatchNorm2d-126           [-1, 64, 14, 14]             128
+     BasicConv2d-127           [-1, 64, 14, 14]               0
+       MaxPool2d-128          [-1, 512, 14, 14]               0
+          Conv2d-129           [-1, 64, 14, 14]          32,768
+     BatchNorm2d-130           [-1, 64, 14, 14]             128
+     BasicConv2d-131           [-1, 64, 14, 14]               0
+       Inception-132          [-1, 528, 14, 14]               0
+          Conv2d-133          [-1, 256, 14, 14]         135,168
+     BatchNorm2d-134          [-1, 256, 14, 14]             512
+     BasicConv2d-135          [-1, 256, 14, 14]               0
+          Conv2d-136          [-1, 160, 14, 14]          84,480
+     BatchNorm2d-137          [-1, 160, 14, 14]             320
+     BasicConv2d-138          [-1, 160, 14, 14]               0
+          Conv2d-139          [-1, 320, 14, 14]         460,800
+     BatchNorm2d-140          [-1, 320, 14, 14]             640
+     BasicConv2d-141          [-1, 320, 14, 14]               0
+          Conv2d-142           [-1, 32, 14, 14]          16,896
+     BatchNorm2d-143           [-1, 32, 14, 14]              64
+     BasicConv2d-144           [-1, 32, 14, 14]               0
+          Conv2d-145          [-1, 128, 14, 14]          36,864
+     BatchNorm2d-146          [-1, 128, 14, 14]             256
+     BasicConv2d-147          [-1, 128, 14, 14]               0
+       MaxPool2d-148          [-1, 528, 14, 14]               0
+          Conv2d-149          [-1, 128, 14, 14]          67,584
+     BatchNorm2d-150          [-1, 128, 14, 14]             256
+     BasicConv2d-151          [-1, 128, 14, 14]               0
+       Inception-152          [-1, 832, 14, 14]               0
+       MaxPool2d-153            [-1, 832, 7, 7]               0
+          Conv2d-154            [-1, 256, 7, 7]         212,992
+     BatchNorm2d-155            [-1, 256, 7, 7]             512
+     BasicConv2d-156            [-1, 256, 7, 7]               0
+          Conv2d-157            [-1, 160, 7, 7]         133,120
+     BatchNorm2d-158            [-1, 160, 7, 7]             320
+     BasicConv2d-159            [-1, 160, 7, 7]               0
+          Conv2d-160            [-1, 320, 7, 7]         460,800
+     BatchNorm2d-161            [-1, 320, 7, 7]             640
+     BasicConv2d-162            [-1, 320, 7, 7]               0
+          Conv2d-163             [-1, 32, 7, 7]          26,624
+     BatchNorm2d-164             [-1, 32, 7, 7]              64
+     BasicConv2d-165             [-1, 32, 7, 7]               0
+          Conv2d-166            [-1, 128, 7, 7]          36,864
+     BatchNorm2d-167            [-1, 128, 7, 7]             256
+     BasicConv2d-168            [-1, 128, 7, 7]               0
+       MaxPool2d-169            [-1, 832, 7, 7]               0
+          Conv2d-170            [-1, 128, 7, 7]         106,496
+     BatchNorm2d-171            [-1, 128, 7, 7]             256
+     BasicConv2d-172            [-1, 128, 7, 7]               0
+       Inception-173            [-1, 832, 7, 7]               0
+          Conv2d-174            [-1, 384, 7, 7]         319,488
+     BatchNorm2d-175            [-1, 384, 7, 7]             768
+     BasicConv2d-176            [-1, 384, 7, 7]               0
+          Conv2d-177            [-1, 192, 7, 7]         159,744
+     BatchNorm2d-178            [-1, 192, 7, 7]             384
+     BasicConv2d-179            [-1, 192, 7, 7]               0
+          Conv2d-180            [-1, 384, 7, 7]         663,552
+     BatchNorm2d-181            [-1, 384, 7, 7]             768
+     BasicConv2d-182            [-1, 384, 7, 7]               0
+          Conv2d-183             [-1, 48, 7, 7]          39,936
+     BatchNorm2d-184             [-1, 48, 7, 7]              96
+     BasicConv2d-185             [-1, 48, 7, 7]               0
+          Conv2d-186            [-1, 128, 7, 7]          55,296
+     BatchNorm2d-187            [-1, 128, 7, 7]             256
+     BasicConv2d-188            [-1, 128, 7, 7]               0
+       MaxPool2d-189            [-1, 832, 7, 7]               0
+          Conv2d-190            [-1, 128, 7, 7]         106,496
+     BatchNorm2d-191            [-1, 128, 7, 7]             256
+     BasicConv2d-192            [-1, 128, 7, 7]               0
+       Inception-193           [-1, 1024, 7, 7]               0
+AdaptiveAvgPool2d-194           [-1, 1024, 1, 1]               0
+         Dropout-195                 [-1, 1024]               0
+          Linear-196                  [-1, 512]         524,800
+            ReLU-197                  [-1, 512]               0
+         Dropout-198                  [-1, 512]               0
+          Linear-199                  [-1, 200]         102,600
+       GoogLeNet-200                  [-1, 200]               0
+================================================================
+Total params: 6,227,304
+Trainable params: 627,400
+Non-trainable params: 5,599,904
+----------------------------------------------------------------
+Input size (MB): 0.57
+Forward/backward pass size (MB): 94.11
+Params size (MB): 23.76
+Estimated Total Size (MB): 118.44
+----------------------------------------------------------------
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 5.36892    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 0.00%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 5.35381    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 0.28%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 5.27447    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 0.60%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 5.30536    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 0.71%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 5.35829    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 0.84%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 5.26534    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 0.92%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 5.23911    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 0.92%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 5.24355    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 1.06%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 5.12726    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.04%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 5.29850    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.03%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 5.28165    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 1.11%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 5.22193    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.21%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 5.09158    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.27%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 5.14058    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.29%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 4.97965    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 1.33%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 5.20937    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.32%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 4.89706    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.36%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 5.05173    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.39%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 4.88192    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 1.43%
+Epoch [1/10], Mean Train Loss: 4.7329, Mean Test Loss: 4.6848, Train Accuracy: 5.66%, Test Accuracy: 6.59%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 4.79243    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 3.12%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 4.66715    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 3.69%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 4.77314    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 2.83%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 4.62152    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 3.02%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 4.42541    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 3.73%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 4.54638    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 3.86%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 4.48037    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 4.20%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 4.49863    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 4.36%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 4.53910    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 4.51%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 4.30278    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 4.64%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 4.40868    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 4.67%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 4.15864    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 4.84%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 4.23245    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 4.78%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 4.61563    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 5.01%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 4.23485    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 5.12%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 4.33645    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 5.22%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 4.18393    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 5.49%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 4.10672    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 5.52%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 4.31712    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 5.85%
+Epoch [2/10], Mean Train Loss: 3.9058, Mean Test Loss: 3.8148, Train Accuracy: 15.57%, Test Accuracy: 15.41%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 4.11353    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 12.50%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 4.42446    Batch Accuracy: 0.00%    Rolling Epoch Accuracy: 11.65%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 4.12332    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 10.57%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.90818    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.38%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 4.27677    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 9.98%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.68896    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 9.62%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 3.96891    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 9.58%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 4.05131    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.04%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 4.08976    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 10.19%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.86773    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 10.30%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.73041    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 10.46%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.74953    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.39%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 4.06422    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.49%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.67392    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 10.52%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.55915    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 10.82%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 4.03177    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 10.93%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 4.13332    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 11.08%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 4.33506    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.96%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 4.24514    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 10.88%
+Epoch [3/10], Mean Train Loss: 3.4330, Mean Test Loss: 3.2978, Train Accuracy: 24.14%, Test Accuracy: 25.41%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 3.61610    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 12.50%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 3.58503    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 13.92%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 3.73826    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 13.54%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 4.03154    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 13.51%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 3.66641    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 14.10%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.87521    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 13.97%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 3.66590    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 14.24%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.78727    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 14.44%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 3.54835    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 14.51%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.70360    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 14.70%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.63238    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 14.88%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.43049    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 15.06%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.44440    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 14.95%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.73892    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 14.65%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.89719    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 14.85%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.87126    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 14.98%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.14491    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 15.16%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.30392    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 15.08%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.57289    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 15.14%
+Epoch [4/10], Mean Train Loss: 3.1158, Mean Test Loss: 2.9896, Train Accuracy: 29.01%, Test Accuracy: 28.58%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 3.15783    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 18.75%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 3.93160    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 17.05%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 3.47788    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 19.05%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.34294    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 18.35%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 3.74603    Batch Accuracy: 3.12%    Rolling Epoch Accuracy: 17.30%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.45650    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 17.52%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 2.97969    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 18.24%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.36298    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 18.22%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 3.64075    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 18.02%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.14809    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 18.17%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.44228    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 18.13%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.40177    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 18.38%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.10028    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 18.21%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.26861    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 18.23%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.21988    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 18.33%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.37755    Batch Accuracy: 34.38%    Rolling Epoch Accuracy: 18.42%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.60346    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 18.26%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.25706    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 18.40%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.23851    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 18.61%
+Epoch [5/10], Mean Train Loss: 2.9222, Mean Test Loss: 2.7602, Train Accuracy: 32.28%, Test Accuracy: 32.46%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 3.77961    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 12.50%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 3.44999    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 18.18%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 2.91314    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 20.83%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.37358    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 19.96%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 3.28990    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 19.59%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.72610    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 20.34%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 3.45234    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 19.98%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.24092    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 20.33%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 3.52889    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 20.14%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.34679    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 19.71%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.24575    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 19.77%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.30712    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 19.88%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.60777    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 19.83%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.42961    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 19.87%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.51696    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 20.19%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 2.85520    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 20.32%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 2.97466    Batch Accuracy: 9.38%    Rolling Epoch Accuracy: 20.30%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.18226    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 20.19%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.21563    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 20.36%
+Epoch [6/10], Mean Train Loss: 2.8030, Mean Test Loss: 2.6535, Train Accuracy: 34.00%, Test Accuracy: 34.14%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 3.33596    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 18.75%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 3.46541    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 20.45%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 3.59380    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 20.98%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.06506    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 20.16%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 4.12386    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 21.57%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.60001    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 20.89%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 2.82324    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 20.90%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.21980    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 21.08%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 3.29609    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 20.99%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.33389    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 21.43%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.10298    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 21.57%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.06541    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 21.31%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.00375    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 21.46%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.22918    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 21.71%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.03414    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 21.54%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.01858    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 21.54%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.16559    Batch Accuracy: 34.38%    Rolling Epoch Accuracy: 21.70%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 2.93524    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 21.77%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.18240    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 22.00%
+Epoch [7/10], Mean Train Loss: 2.6728, Mean Test Loss: 2.5254, Train Accuracy: 36.37%, Test Accuracy: 36.68%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 3.13913    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 12.50%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 2.90296    Batch Accuracy: 37.50%    Rolling Epoch Accuracy: 26.99%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 2.97121    Batch Accuracy: 34.38%    Rolling Epoch Accuracy: 27.23%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.25892    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 25.50%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 3.40017    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 24.16%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.04536    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 23.59%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 3.24832    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 23.46%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.58204    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 23.59%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 3.20112    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.00%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.53686    Batch Accuracy: 6.25%    Rolling Epoch Accuracy: 23.63%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.14753    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 23.58%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 2.94696    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 23.82%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.30536    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.04%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.15795    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.14%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.50280    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 23.98%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.38567    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 23.72%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.45876    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 23.87%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.28043    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 24.03%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.60214    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 23.81%
+Epoch [8/10], Mean Train Loss: 2.5711, Mean Test Loss: 2.4511, Train Accuracy: 38.51%, Test Accuracy: 38.61%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 2.77048    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 21.88%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 3.13549    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 26.70%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 2.83009    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 25.30%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.55674    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 25.10%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 2.87228    Batch Accuracy: 37.50%    Rolling Epoch Accuracy: 25.08%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.08455    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 25.49%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 2.85456    Batch Accuracy: 37.50%    Rolling Epoch Accuracy: 25.31%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.30948    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 25.22%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 2.63489    Batch Accuracy: 34.38%    Rolling Epoch Accuracy: 24.73%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 3.23648    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 24.45%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.25204    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 24.69%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 2.92369    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 24.72%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.34624    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.61%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 2.91880    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.74%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.39057    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 24.87%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.09729    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 24.83%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.14198    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 24.88%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.08581    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 24.73%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.07315    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 24.97%
+Epoch [9/10], Mean Train Loss: 2.5175, Mean Test Loss: 2.3824, Train Accuracy: 40.14%, Test Accuracy: 39.77%
+Training Batch [0/188]    Batch Size: 32    Batch Mean Loss: 2.82182    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 31.25%
+Training Batch [10/188]    Batch Size: 32    Batch Mean Loss: 2.97809    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 25.85%
+Training Batch [20/188]    Batch Size: 32    Batch Mean Loss: 3.00944    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 23.51%
+Training Batch [30/188]    Batch Size: 32    Batch Mean Loss: 3.06179    Batch Accuracy: 25.00%    Rolling Epoch Accuracy: 23.99%
+Training Batch [40/188]    Batch Size: 32    Batch Mean Loss: 2.35258    Batch Accuracy: 37.50%    Rolling Epoch Accuracy: 24.31%
+Training Batch [50/188]    Batch Size: 32    Batch Mean Loss: 3.01976    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 24.51%
+Training Batch [60/188]    Batch Size: 32    Batch Mean Loss: 3.04563    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 24.85%
+Training Batch [70/188]    Batch Size: 32    Batch Mean Loss: 3.63947    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 25.09%
+Training Batch [80/188]    Batch Size: 32    Batch Mean Loss: 2.95310    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.58%
+Training Batch [90/188]    Batch Size: 32    Batch Mean Loss: 2.64908    Batch Accuracy: 28.12%    Rolling Epoch Accuracy: 24.35%
+Training Batch [100/188]    Batch Size: 32    Batch Mean Loss: 3.80659    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 24.72%
+Training Batch [110/188]    Batch Size: 32    Batch Mean Loss: 3.14474    Batch Accuracy: 15.62%    Rolling Epoch Accuracy: 25.14%
+Training Batch [120/188]    Batch Size: 32    Batch Mean Loss: 3.11502    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 25.31%
+Training Batch [130/188]    Batch Size: 32    Batch Mean Loss: 3.06611    Batch Accuracy: 18.75%    Rolling Epoch Accuracy: 25.14%
+Training Batch [140/188]    Batch Size: 32    Batch Mean Loss: 3.09334    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 25.35%
+Training Batch [150/188]    Batch Size: 32    Batch Mean Loss: 3.15340    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 25.33%
+Training Batch [160/188]    Batch Size: 32    Batch Mean Loss: 3.45082    Batch Accuracy: 21.88%    Rolling Epoch Accuracy: 25.19%
+Training Batch [170/188]    Batch Size: 32    Batch Mean Loss: 3.09485    Batch Accuracy: 31.25%    Rolling Epoch Accuracy: 25.44%
+Training Batch [180/188]    Batch Size: 32    Batch Mean Loss: 3.15664    Batch Accuracy: 12.50%    Rolling Epoch Accuracy: 25.26%
+Epoch [10/10], Mean Train Loss: 2.4859, Mean Test Loss: 2.3724, Train Accuracy: 40.16%, Test Accuracy: 39.30%
+Time elapsed: 1286.545739
