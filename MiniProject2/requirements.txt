@@ -22,7 +22,7 @@ scipy==1.13.0
 six==1.16.0
 sympy==1.12
 tifffile==2024.2.12
-torch==2.2.2+cpu
-torchaudio==2.2.2+cpu
-torchvision==0.17.2+cpu
+# torch==2.2.2+cpu
+# torchaudio==2.2.2+cpu
+# torchvision==0.17.2+cpu
 typing_extensions==4.8.0

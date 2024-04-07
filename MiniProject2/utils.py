@@ -12,11 +12,11 @@ from skimage.metrics import peak_signal_noise_ratio
 class Utils:
 
     @staticmethod
-    def create_setA(dataset_config, start_from = 0):
+    def create_setA(dataset_config, start_from = 0, end_at = 239):
         images_dirs = dataset_config['images_dirs']
         os.makedirs(dataset_config['setA'], exist_ok=True)
 
-        for images_dir in sorted(os.listdir(images_dirs))[start_from:]:
+        for images_dir in sorted(os.listdir(images_dirs))[start_from:end_at+1]:
             src_dir = os.path.join(images_dirs, images_dir)
             dest_dir = os.path.join(dataset_config['setA'], images_dir)
             os.makedirs(dest_dir, exist_ok=True)
@@ -28,11 +28,11 @@ class Utils:
                 imsave(os.path.join(dest_dir, image_path), image)
 
     @staticmethod
-    def create_setB(dataset_config, start_from = 0):
+    def create_setB(dataset_config, start_from = 0, end_at = 239):
         setA_dir = dataset_config['setA']
         os.makedirs(dataset_config['setB'], exist_ok=True)
 
-        for images_dir in sorted(os.listdir(setA_dir))[start_from:]:
+        for images_dir in sorted(os.listdir(setA_dir))[start_from:end_at+1]:
             src_dir = os.path.join(setA_dir, images_dir)
             dest_dir = os.path.join(dataset_config['setB'], images_dir)
             os.makedirs(dest_dir, exist_ok=True)
@@ -50,7 +50,7 @@ class Utils:
     
     @staticmethod
     def image_to_tensor(image):
-        # if image.max() > 1: image /= image.max()
+        if image.max() > 1: image = image / image.max()
         return torch.tensor(image, dtype = torch.float32).permute(2, 0, 1)
     
     @staticmethod

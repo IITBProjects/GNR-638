@@ -11,13 +11,22 @@
             {"kernel_size": 11, "sigma": 1.6}
         ],
         "test_split": 0.2,
-        "num_dirs": 2
+        "num_dirs": 4
     },
     "train": {
-        "epochs": 2,
+        "epochs": 10,
         "lr": 0.01,
-        "batch_size": 16,
-        "plots_dir": "plots",
-        "batch_log_interval": 1
+        "batch_size": 64,
+        "model_save_path": "models/model.pth",
+        "batch_log_interval": 1,
+        "plot_interval": 2,
+        "model_save_interval": 1,
+        "encoder_decoder": {
+            "kernel_size": 5,
+            "filters": [32, 64]
+        },
+        "resnet": {
+            "depth": 5
+        }
     }
 }

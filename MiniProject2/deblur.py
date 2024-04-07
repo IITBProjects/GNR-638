@@ -3,10 +3,12 @@ import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
 import torch.optim as optim
+from torchsummary import summary
+# from torchvision.models import SSIM
 
 from dataset import RuntimeImageDataset
 from utils import Utils
-from model import DeblurModel
+from model import DeblurModel, EncoderDecoder, DeblurResnet
 
 
 class DeblurImages:
@@ -32,8 +34,10 @@ class DeblurImages:
         train_dataloader = DataLoader(self.train_dataset, batch_size = train_config['batch_size'], shuffle = True)
         test_dataloader = DataLoader(self.test_dataset, batch_size = train_config['batch_size'], shuffle = False)
 
-        self.model = DeblurModel()
-        self.criterion = nn.MSELoss()
+        # self.model = EncoderDecoder(**train_config['encoder_decoder'])
+        self.model = DeblurResnet(**train_config['resnet'])
+        summary(self.model, (3, *self.config['dataset']['image_size']))
+        self.criterion = nn.L1Loss()
         self.optimizer = optim.Adam(self.model.parameters(), lr = train_config['lr'])
         # self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', patience=5, factor=0.1, verbose=True)
 
@@ -50,10 +54,14 @@ class DeblurImages:
 
             print(f"Epoch [{epoch+1}/{train_config['epochs']}]: train_loss: {train_loss}, test_loss: {test_loss}, train_psnr: {train_psnr}, test_psnr: {test_psnr}")
 
-        Utils.plot(train_losses, test_losses, 'Loss', './plots/loss.png')
-        Utils.plot(train_psnrs, test_psnrs, 'PSNR', './plots/psnr.png')
+            if (epoch + 1) % train_config['plot_interval'] == 0:
+                print("Plotting loss and psnr")
+                Utils.plot(train_losses, test_losses, 'Loss', './plots/loss.png')
+                Utils.plot(train_psnrs, test_psnrs, 'PSNR', './plots/psnr.png')
 
-        torch.save(self.model.state_dict(), './models/model.pth')
+            if (epoch + 1) % train_config['model_save_interval'] == 0:
+                print("Saving model")
+                torch.save(self.model.state_dict(), train_config['model_save_path'])
 
 
     def run_epoch(self, dataloader: DataLoader, train: bool):
@@ -72,8 +80,8 @@ class DeblurImages:
                 running_loss += loss.item()
                 psnr += sum([Utils.psnr_tensor(Y_pred[i], Y[i]) for i in range(len(Y))])
 
-                total = batch_num * dataloader.batch_size + len(Y)
                 if batch_num % self.config['train']['batch_log_interval'] == 0 and train:
+                    total = batch_num * dataloader.batch_size + len(Y)
                     print(f"Batch [{batch_num+1}/{len(dataloader)}]: loss: {running_loss / total}, psnr: {psnr / total}")
 
         return running_loss / len(dataloader.dataset), psnr / len(dataloader.dataset)
