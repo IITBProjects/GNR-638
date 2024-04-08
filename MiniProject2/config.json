@@ -16,17 +16,22 @@
     "train": {
         "epochs": 10,
         "lr": 0.01,
-        "batch_size": 64,
+        "batch_size": 16,
         "model_save_path": "models/model.pth",
         "batch_log_interval": 1,
         "plot_interval": 2,
         "model_save_interval": 1,
+        "model": "mimo_unet",
+        "loss_func": "mimo",
         "encoder_decoder": {
             "kernel_size": 5,
             "filters": [32, 64]
         },
         "resnet": {
             "depth": 5
+        },
+        "mimo_unet": {
+            "num_res": 8
         }
     }
 }

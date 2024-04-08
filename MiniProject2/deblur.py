@@ -9,6 +9,21 @@ from torchsummary import summary
 from dataset import RuntimeImageDataset
 from utils import Utils
 from model import DeblurModel, EncoderDecoder, DeblurResnet
+from mimo_unet import MIMOUNet, MIMOUNetPlus
+
+
+MODELS = {
+    'encoder_decoder': EncoderDecoder,
+    'resnet': DeblurResnet,
+    'mimo_unet': MIMOUNet,
+    'mimo_unet_plus': MIMOUNetPlus
+}
+
+LOSS_FUNCTIONS = {
+    'l1': nn.L1Loss(),
+    'mse': nn.MSELoss(),
+    'mimo': lambda x, y: Utils.get_mimo_loss(nn.L1Loss(), x, y)
+}
 
 
 class DeblurImages:
@@ -34,10 +49,9 @@ class DeblurImages:
         train_dataloader = DataLoader(self.train_dataset, batch_size = train_config['batch_size'], shuffle = True)
         test_dataloader = DataLoader(self.test_dataset, batch_size = train_config['batch_size'], shuffle = False)
 
-        # self.model = EncoderDecoder(**train_config['encoder_decoder'])
-        self.model = DeblurResnet(**train_config['resnet'])
+        self.model: nn.Module = MODELS[train_config['model']](**train_config[train_config['model']])
         summary(self.model, (3, *self.config['dataset']['image_size']))
-        self.criterion = nn.L1Loss()
+        self.criterion = LOSS_FUNCTIONS[train_config['loss_func']]
         self.optimizer = optim.Adam(self.model.parameters(), lr = train_config['lr'])
         # self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', patience=5, factor=0.1, verbose=True)
 

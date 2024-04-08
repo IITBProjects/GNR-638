@@ -47,7 +47,7 @@ class DeblurResnet(nn.Module):
     def __init__(self, depth = 5):
         super(DeblurResnet, self).__init__()
 
-        resnet = models.resnet18(pretrained=True)
+        resnet = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
         self.encoder = nn.Sequential(*list(resnet.children())[:depth-7])
 
         decoder_layers, init_filters = [], 64

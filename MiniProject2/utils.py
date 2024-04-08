@@ -3,6 +3,7 @@ import random
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
+import torch.nn.functional as F
 from skimage.filters import gaussian
 from skimage.io import imread, imsave
 from skimage.transform import resize
@@ -26,6 +27,7 @@ class Utils:
                 image = resize(image, (dataset_config['image_size'][0], dataset_config['image_size'][1]))
                 image = (image * 255).astype(np.uint8)
                 imsave(os.path.join(dest_dir, image_path), image)
+            print(images_dir)
 
     @staticmethod
     def create_setB(dataset_config, start_from = 0, end_at = 239):
@@ -74,6 +76,17 @@ class Utils:
     @staticmethod
     def psnr_tensor(y1, y2):
         return peak_signal_noise_ratio(Utils.tensor_to_image(y1), Utils.tensor_to_image(y2))
+    
+    @staticmethod
+    def get_mimo_loss(criterion, pred_img, label_img):
+        interpolate_label  = lambda x: F.interpolate(label_img, scale_factor = x, mode='bilinear')
+        label_imgs = [interpolate_label(0.25), interpolate_label(0.5), label_img]
+        loss_content = sum([criterion(pred_img[i], label_imgs[i]) for i in range(3)])
+
+        fft = lambda x: torch.rfft(x, signal_ndim=2, normalized=False, onesided=False)
+        loss_fft = sum([criterion(fft(pred_img[i]), fft(label_imgs[i])) for i in range(3)])
+
+        return loss_content + 0.1 * loss_fft
     
     @staticmethod
     def plot(y_train, y_test, label, path):
