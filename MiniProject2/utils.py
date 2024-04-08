@@ -52,12 +52,12 @@ class Utils:
     
     @staticmethod
     def image_to_tensor(image):
-        if image.max() > 1: image = image / image.max()
         return torch.tensor(image, dtype = torch.float32).permute(2, 0, 1)
     
     @staticmethod
     def tensor_to_image(tensor):
         image = tensor.permute(1, 2, 0).detach().numpy()
+        print(image.min(), image.max())
         if image.max() <= 1: image *= 255
         return np.uint8(image)
     
@@ -78,15 +78,17 @@ class Utils:
         return peak_signal_noise_ratio(Utils.tensor_to_image(y1), Utils.tensor_to_image(y2))
     
     @staticmethod
-    def get_mimo_loss(criterion, pred_img, label_img):
+    def get_mimo_loss(criterion, pred_imgs, label_img):
         interpolate_label  = lambda x: F.interpolate(label_img, scale_factor = x, mode='bilinear')
         label_imgs = [interpolate_label(0.25), interpolate_label(0.5), label_img]
-        loss_content = sum([criterion(pred_img[i], label_imgs[i]) for i in range(3)])
+        loss_content = sum([criterion(pred_imgs[i], label_imgs[i]) for i in range(3)])
 
-        fft = lambda x: torch.rfft(x, signal_ndim=2, normalized=False, onesided=False)
-        loss_fft = sum([criterion(fft(pred_img[i]), fft(label_imgs[i])) for i in range(3)])
+        # fft = lambda x: torch.fft.rfft2(x, signal_ndim = 2, normalized = False, onesided = False)
+        fft = lambda x: torch.fft.rfft2(x)
+        loss_fft = sum([criterion(fft(pred_imgs[i]), fft(label_imgs[i])) for i in range(3)])
 
-        return loss_content + 0.1 * loss_fft
+        print(loss_content, loss_fft)
+        return loss_content
     
     @staticmethod
     def plot(y_train, y_test, label, path):

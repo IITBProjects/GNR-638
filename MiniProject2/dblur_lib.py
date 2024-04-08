@@ -44,35 +44,3 @@ class Restormer:
             lr_scheduler=lr_scheduler,
             epochs=train_config['epochs']
         )
-
-    # def test(self):
-    #     restormer_tester = RestormerTester()
-    #     test_dataloader = restormer_tester.get_test_dataloader(test_img_dir, batch_size=8)
-    #     model = restormer_tester.get_model(num_layers = 4, num_refinement_blocks = 2)
-    #     loss_func = restormer_tester.get_loss()
-
-    #     # test model on test dataset.
-    #     restormer_tester.test(model,
-    #                         model_path,
-    #                         test_dataloader,
-    #                         loss_func,
-    #                         is_checkpoint=True,
-    #                         window_slicing=True,
-    #                         window_size=256)
-                            
-    #     # deblur images in a directory using pretrained model
-    #     restormer_tester.deblur_imgs(model,
-    #                                 model_path,
-    #                                 blur_img_dir,
-    #                                 sharp_img_dir,
-    #                                 is_checkpoint=True,
-    #                                 batch_size=8,
-    #                                 window_slicing=False)
-
-    #     #deblur single image using pretrained model
-    #     restormer_tester.deblur_single_img(model,
-    #                                     model_path,
-    #                                     blur_img_path,
-    #                                     sharp_img_path,
-    #                                     is_checkpoint=True,
-    #                                     window_slicing=False)

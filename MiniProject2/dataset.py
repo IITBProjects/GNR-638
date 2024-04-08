@@ -31,7 +31,7 @@ class RuntimeImageDataset(Dataset):
         return len(self.image_paths)
 
     def __getitem__(self, index):
-        image = imread(os.path.join(self.dir, *self.image_paths[index]))
+        image = imread(os.path.join(self.dir, *self.image_paths[index])) / 255
         input_image = self.input_transform(image) if self.input_transform else image
         output_image = self.output_transform(image) if self.output_transform else image
         return Utils.image_to_tensor(input_image), Utils.image_to_tensor(output_image)

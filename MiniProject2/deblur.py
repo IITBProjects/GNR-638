@@ -92,7 +92,7 @@ class DeblurImages:
                     self.optimizer.step()
                     # self.scheduler.step()
                 running_loss += loss.item()
-                psnr += sum([Utils.psnr_tensor(Y_pred[i], Y[i]) for i in range(len(Y))])
+                # psnr += sum([Utils.psnr_tensor(Y_pred[-1][i], Y[i]) for i in range(len(Y))])
 
                 if batch_num % self.config['train']['batch_log_interval'] == 0 and train:
                     total = batch_num * dataloader.batch_size + len(Y)
