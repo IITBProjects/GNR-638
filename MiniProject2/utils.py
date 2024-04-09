@@ -57,7 +57,7 @@ class Utils:
     @staticmethod
     def tensor_to_image(tensor):
         image = tensor.permute(1, 2, 0).detach().numpy()
-        print(image.min(), image.max())
+        # print(image.min(), image.max())
         if image.max() <= 1: image *= 255
         return np.uint8(image)
     

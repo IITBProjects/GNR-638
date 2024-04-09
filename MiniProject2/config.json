@@ -11,7 +11,7 @@
             {"kernel_size": 11, "sigma": 1.6}
         ],
         "test_split": 0.2,
-        "num_dirs": 4
+        "num_dirs": 10
     },
     "train": {
         "epochs": 10,
@@ -21,8 +21,8 @@
         "batch_log_interval": 1,
         "plot_interval": 2,
         "model_save_interval": 1,
-        "model": "mimo_unet",
-        "loss_func": "mimo",
+        "model": "unet",
+        "loss_func": "l1",
         "encoder_decoder": {
             "kernel_size": 5,
             "filters": [32, 64]
@@ -32,6 +32,10 @@
         },
         "mimo_unet": {
             "num_res": 8
+        },
+        "unet": {
+            "in_channels":3,
+            "out_channels":3
         }
     }
 }
