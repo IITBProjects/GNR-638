@@ -150,5 +150,7 @@ class DeblurImages:
         for image_path in sorted(os.listdir(os.path.join(train_config['pred_dir'], 'blur'))):
             image = Utils.image_to_tensor(imread(os.path.join(train_config['pred_dir'], 'blur', image_path)) / 255)
             deblur = self.model(image.unsqueeze(0))[0]
+            if not os.path.exists(os.path.join(train_config['pred_dir'], 'deblur')):
+                os.makedirs(os.path.join(train_config['pred_dir'], 'deblur'))     
             imsave(os.path.join(train_config['pred_dir'], 'deblur', image_path), Utils.tensor_to_image(deblur))
 

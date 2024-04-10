@@ -15,10 +15,10 @@ config = json.load(open('config.json'))
 
 def main():
     deblur_images = DeblurImages(config)
-    deblur_images.create_datasets()
+    # deblur_images.create_datasets()
     # deblur_images.create_datasets_new()
-    deblur_images.train()
-    # deblur_images.pred()
+    # deblur_images.train()
+    deblur_images.pred()
 
     # restormer = Restormer(config)
     # restormer.create_dataset()
