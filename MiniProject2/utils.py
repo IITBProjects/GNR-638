@@ -57,14 +57,18 @@ class Utils:
     @staticmethod
     def tensor_to_image(tensor):
         image = tensor.permute(1, 2, 0).detach().numpy()
-        # print(image.min(), image.max())
-        if image.max() <= 1: image *= 255
+        image = (image - image.min()) / (image.max() - image.min()) * 255
         return np.uint8(image)
+    
+    @staticmethod
+    def show_tensor_image(tensor):
+        plt.imshow(Utils.tensor_to_image(tensor))
+        plt.show()
     
     @staticmethod
     def train_test_split(image_dirs, test_split, num_dirs = 240):
         train_image_paths, test_image_paths = [], []
-        for image_dir in sorted(os.listdir(image_dirs))[:num_dirs]:
+        for image_dir in random.sample(sorted(os.listdir(image_dirs)), num_dirs):
             image_paths = [(image_dir, image_path) for image_path in os.listdir(os.path.join(image_dirs, image_dir))]
             random.shuffle(image_paths)
             train_size = int((1 - test_split) * len(image_paths))
@@ -73,6 +77,13 @@ class Utils:
             test_image_paths += image_paths[train_size:]
         return train_image_paths, test_image_paths
     
+    @staticmethod
+    def train_test_split_dir(dir, test_split, num_dirs = 240):
+        image_dirs = random.sample(sorted(os.listdir(dir)), num_dirs)
+        train_size = int((1 - test_split) * len(image_dirs))
+        
+        return image_dirs[:train_size], image_dirs[train_size:]
+
     @staticmethod
     def psnr_tensor(y1, y2):
         return peak_signal_noise_ratio(Utils.tensor_to_image(y1), Utils.tensor_to_image(y2))

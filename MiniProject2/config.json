@@ -3,7 +3,6 @@
         "images_dirs": "dataset/train_sharp",
         "setA": "dataset/setA",
         "setB": "dataset/setB",
-        "load": "runtime",
         "image_size": [256, 448],
         "gaussian_filters": [
             {"kernel_size": 3, "sigma": 0.3},
@@ -11,31 +10,35 @@
             {"kernel_size": 11, "sigma": 1.6}
         ],
         "test_split": 0.2,
-        "num_dirs": 10
+        "num_dirs": 240
     },
     "train": {
-        "epochs": 10,
+        "epochs": 19,
         "lr": 0.01,
-        "batch_size": 32,
+        "batch_size": 4,
+        "load": false,
         "model_save_path": "models/model.pth",
         "batch_log_interval": 1,
-        "plot_interval": 2,
+        "plot_interval": 1,
         "model_save_interval": 1,
-        "model": "unet",
-        "loss_func": "l1",
-        "encoder_decoder": {
-            "kernel_size": 5,
-            "filters": [32, 64]
-        },
-        "resnet": {
-            "depth": 5
-        },
-        "mimo_unet": {
-            "num_res": 8
-        },
-        "unet": {
-            "in_channels":3,
-            "out_channels":3
+        "pred_dir": "mp2_test/custom_test",
+        "model": "cnn",
+        "loss_func": "mse",
+        "srcnn": {},
+        "deblur_model": {},
+        "encoder_decoder": {"kernel_size": 5, "filters": [32, 64]},
+        "resnet": {"depth": 5},
+        "mimo_unet": {"num_res": 8},
+        "unet": {"in_channels":3, "out_channels":3},
+        "gan": {},
+        "cnn": {},
+        "resnet16": {},
+        "restormer": {
+            "num_layers": 3,
+            "num_refinement_blocks": 2,
+            "num_transformer_blocks": [4, 6, 6],
+            "heads": [1, 2, 4],
+            "channels": [48, 96, 192]
         }
     }
 }
