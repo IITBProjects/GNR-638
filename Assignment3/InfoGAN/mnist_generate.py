@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-load_path', required=True, help='Checkpoint to load path from')
 args = parser.parse_args()
 
-from models.mnist_model import Generator
+from model_codes.mnist_model import Generator
 
 # Load the checkpoint file
 state_dict = torch.load(args.load_path)

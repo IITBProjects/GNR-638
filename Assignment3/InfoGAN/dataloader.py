@@ -49,6 +49,16 @@ def get_data(dataset, batch_size):
 
         dataset = dsets.ImageFolder(root=root+'celeba/', transform=transform)
 
+    # Get PatternNet dataset.
+    elif dataset == 'PatternNet':
+        transform = transforms.Compose([
+            transforms.Resize(32),  
+            transforms.CenterCrop(32),
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5),
+                                (0.5, 0.5, 0.5))])  
+
+    dataset = dsets.ImageFolder(root=root+'PatternNet/images', transform=transform)
     # Create dataloader.
     dataloader = torch.utils.data.DataLoader(dataset, 
                                             batch_size=batch_size, 

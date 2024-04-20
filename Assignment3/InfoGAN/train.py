@@ -8,19 +8,21 @@ import matplotlib.animation as animation
 import time
 import random
 
-from models.mnist_model import Generator, Discriminator, DHead, QHead
+from model_codes.mnist_model import Generator, Discriminator, DHead, QHead
 from dataloader import get_data
 from utils import *
 from config import params
 
 if(params['dataset'] == 'MNIST'):
-    from models.mnist_model import Generator, Discriminator, DHead, QHead
+    from model_codes.mnist_model import Generator, Discriminator, DHead, QHead
 elif(params['dataset'] == 'SVHN'):
-    from models.svhn_model import Generator, Discriminator, DHead, QHead
+    from model_codes.svhn_model import Generator, Discriminator, DHead, QHead
 elif(params['dataset'] == 'CelebA'):
-    from models.celeba_model import Generator, Discriminator, DHead, QHead
+    from model_codes.celeba_model import Generator, Discriminator, DHead, QHead
 elif(params['dataset'] == 'FashionMNIST'):
-    from models.mnist_model import Generator, Discriminator, DHead, QHead
+    from model_codes.mnist_model import Generator, Discriminator, DHead, QHead
+elif(params['dataset'] == 'PatternNet'):
+    from model_codes.patternet_model import Generator, Discriminator, DHead, QHead
 
 # Set random seed for reproducibility.
 seed = 1123
@@ -60,6 +62,11 @@ elif(params['dataset'] == 'FashionMNIST'):
     params['num_dis_c'] = 1
     params['dis_c_dim'] = 10
     params['num_con_c'] = 2
+elif params['dataset'] == 'PatternNet':
+    params['num_z'] = 128
+    params['num_dis_c'] = 10
+    params['dis_c_dim'] = 10
+    params['num_con_c'] = 0
 
 # Plot the training images.
 sample_batch = next(iter(dataloader))
@@ -143,7 +150,7 @@ for epoch in range(params['num_epochs']):
         # Updating discriminator and DHead
         optimD.zero_grad()
         # Real data
-        label = torch.full((b_size, ), real_label, device=device)
+        label = torch.full((b_size, ), real_label, device=device, dtype=torch.float32)
         output1 = discriminator(real_data)
         probs_real = netD(output1).view(-1)
         loss_real = criterionD(probs_real, label)
