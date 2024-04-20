@@ -1,15 +1,12 @@
 {
-    "dataset": {
-        "mnist_path": "./data/MNIST"
-    },
     "vae_train": {
-        "epochs": 25,
+        "epochs": 50,
         "batch_size": 128,
-        "lr": 1e-3,
-        "variational_beta": 0.1,
+        "lr": 0.001,
+        "variational_beta": 2,
         "vae_model": {
             "capacity": 64,
-            "latent_dims": 2
+            "latent_dims": 8
         }
     },
     "classifier_train": {

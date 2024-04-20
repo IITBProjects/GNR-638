@@ -29,7 +29,7 @@ class Decoder(nn.Module):
         self.conv2 = nn.ConvTranspose2d(in_channels=c*2, out_channels=c, kernel_size=4, stride=2, padding=1)
         self.conv1 = nn.ConvTranspose2d(in_channels=c, out_channels=1, kernel_size=4, stride=2, padding=1)
         self.capacity = capacity
-    
+
     def forward(self, x):
         x = self.fc(x)
         x = x.view(x.size(0), self.capacity*2, 7, 7)

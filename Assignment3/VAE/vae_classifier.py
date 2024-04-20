@@ -6,6 +6,7 @@ from torchvision.datasets import MNIST
 from model import VariationalAutoencoder, VAEClassificationModel
 from utils import Utils
 
+
 class VAEClassifier:
     def __init__(self, config):
         self.config = config
@@ -16,8 +17,8 @@ class VAEClassifier:
         img_transform = transforms.Compose([
             transforms.ToTensor()
         ])
-        self.train_dataset = MNIST(root=self.config['dataset']['mnist_path'], download=True, train=True, transform=img_transform)
-        self.test_dataset = MNIST(root=self.config['dataset']['mnist_path'], download=True, train=False, transform=img_transform)
+        self.train_dataset = MNIST(root='./data/MNIST', download=True, train=True, transform=img_transform)
+        self.test_dataset = MNIST(root='./data/MNIST', download=True, train=False, transform=img_transform)
 
     def train(self):
         vae_model = VariationalAutoencoder(**self.config['vae_train']['vae_model']).to(self.device)

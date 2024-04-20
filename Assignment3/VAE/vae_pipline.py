@@ -6,6 +6,7 @@ from torchvision.datasets import MNIST
 from model import VariationalAutoencoder
 from utils import Utils
 
+
 class VAEPipeline:
     def __init__(self, config):
         self.config = config
@@ -16,8 +17,8 @@ class VAEPipeline:
         img_transform = transforms.Compose([
             transforms.ToTensor()
         ])
-        self.train_dataset = MNIST(root=self.config['dataset']['mnist_path'], download=True, train=True, transform=img_transform)
-        self.test_dataset = MNIST(root=self.config['dataset']['mnist_path'], download=True, train=False, transform=img_transform)
+        self.train_dataset = MNIST(root='./data/MNIST', download=True, train=True, transform=img_transform)
+        self.test_dataset = MNIST(root='./data/MNIST', download=True, train=False, transform=img_transform)
 
     def train(self):
         train_config = self.config['vae_train']
@@ -71,4 +72,3 @@ class VAEPipeline:
         outputs, _, _ = self.model(images)
         Utils.show_images(images, 5, 10, './plots/orignal_images.png')
         Utils.show_images(outputs, 5, 10, './plots/reconstructed_images.png')
-
