@@ -2,7 +2,7 @@
 **/venv
 **/.vscode
 **/dataset
-**/dataset
 **/mp2_test*
 **/models*
 **/custom_test*
+**/results
